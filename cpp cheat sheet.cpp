@@ -1,5 +1,8 @@
 
-3 Introduction - this cheat sheet is to remember C++ language features quickly for algorithm contests
+# Introduction - this cheat sheet is to remember C++ language features quickly for algorithm contests
+
+//To-do:
+//Enhance Stack, queue, vector for nodes instead of primitive data types.
 
 # Data structures
 
@@ -10,7 +13,6 @@ stack
 priority queue
 set
 unordered map
-comparison of nodes
 
 
 # Algorithms
@@ -256,6 +258,55 @@ int main()
         pq.pop();
         cout << "Node " << counter << ": \tName: " << thisnode->name << " \tQuantity: " << thisnode->quant << endl;
         }
+    
+    return 0;
+    }
+///////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////
+////////// HASH MAP ////////////////////////////////////
+#include <iostream>
+#include <unordered_map>
+#include <string>
+
+using namespace std;
+
+int main() 
+    {
+    cout << "C++ Hash Map Code" << endl;
+    
+    // Create an unordered_map
+    unordered_map<string, int> m; // Map's a string key to an int value.
+    
+    // Add a few pairs to the map.
+    m["Sit Still"] = 1;
+    m["Look Pretty"] = 100;
+    m["Starboy"] = 1000;
+    m["Hotel Room"] = 295;
+    
+    // Iterate through the map using iterators.
+    cout << "Printing map using iterators: " << endl;
+    unordered_map<string, int>::iterator it = m.begin();
+    while(it != m.end())
+        {
+        cout << it->first << ": " << it-> second << endl;
+        it++;
+        }
+    cout << endl;
+    
+    // The ordering of the iterator above is random. 
+    
+    // Check if a key exists.
+    if(m.find("Taylor Swift") == m.end()) // Checks entire map...not very efficient.
+        {
+        cout << "Correctly did not find Taylor Swift in our map." << endl;
+        }
+    
+    cout << m["Crooked Smile"] << endl; // Initializes the value for key="Crooked Smile" to 0.
+    
+    // To use a Node instead of a primitive data type, just replace int with the Node. 
+    // It won't affect any operations. (AKA we don't need to do anything special.)
     
     return 0;
     }
