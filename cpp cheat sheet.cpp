@@ -90,6 +90,8 @@ int main()
     
     // Print our vector of vectors.
     Print(inceptionvec);
+	
+	return 0;
     }
 ///////////////////////////////////////////////////////
 
@@ -124,6 +126,7 @@ int main()
         }
     cout << endl;
     
+	return 0;
     }
 ///////////////////////////////////////////////////////
 
@@ -158,5 +161,102 @@ int main()
         }
     cout << endl;
     
+	return 0;
+    }
+///////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////
+////////// Priority Queue ////////////////////////////////////
+#include <iostream>
+#include <queue>
+#include <vector>
+
+using namespace std;
+
+int main() 
+    {
+    cout << "C++ Priority Queue Code" << endl;
+    
+    // Create a priorityqueue
+    priority_queue<int> mypq;
+    // If we wanted the queue to have smaller numbers be prioritized first
+    //priority_queue <int, vector<int>, greater<int> > mypq;
+    
+    // Add some numbers to the priorityqueue
+    mypq.push(4);
+    mypq.push(2);
+    mypq.push(2);
+    mypq.push(6);
+    mypq.push(5);
+    mypq.push(3);
+    mypq.push(1);
+    
+    // Print each number and remove it from the priorityqueue
+    cout << "Printed priority queue: " << endl;
+    while(mypq.empty() == false)
+        {
+        int mynum = mypq.top();
+        cout << mynum << " ";
+        mypq.pop();
+        }
+    cout << endl;
+    
+    
+    // Create a priority queue of a node.
+    // The node we care about
+    struct Node
+        {
+        bool isFood;
+        int quant;
+        string name;
+        
+        // Constructor for this Node
+        Node(bool food, int q, string n)
+            {
+            isFood = food;
+            quant = q;
+            name = n;
+            }
+        
+        Node(): isFood(false), quant(0), name("food") {}
+        };
+    
+    /* Node initialization
+    Node* myNode = new Node(true, 10, "bread");
+    cout << myNode->name << endl;
+    */
+    
+    // Create a comparison tool for the priority queue to know what's best
+    struct SmallerQuant
+        {
+        bool operator()( const Node* a, const Node* b ) const 
+           {
+           // Returns true if a is bigger than b, meaning smaller numbers are prioritized.
+           return a->quant > b->quant;
+           }
+        };
+    
+    // The priority queue
+    priority_queue<Node*, vector<Node*>, SmallerQuant> pq;
+    
+    // Add some nodes to this queue.
+    pq.push(new Node(true , 2, "Dos"));
+    pq.push(new Node(false, 3, "Tres"));
+    pq.push(new Node(true , 4, "Quatro"));
+    pq.push(new Node(false, 1, "Uno"));
+    pq.push(new Node(true , 5, "Cinco"));
+    
+    // Print each node.
+    cout << endl << "Printed priority queue: " << endl;
+    int counter = 0;
+    while(pq.empty() == false)
+        {
+        counter += 1;
+        Node* thisnode = pq.top();
+        pq.pop();
+        cout << "Node " << counter << ": \tName: " << thisnode->name << " \tQuantity: " << thisnode->quant << endl;
+        }
+    
+    return 0;
     }
 ///////////////////////////////////////////////////////
