@@ -290,7 +290,7 @@ int main()
     unordered_map<string, int>::iterator it = m.begin();
     while(it != m.end())
         {
-        cout << it->first << ": " << it-> second << endl;
+        cout << it->first << ": " << it->second << endl;
         it++;
         }
     cout << endl;
@@ -308,6 +308,52 @@ int main()
     // To use a Node instead of a primitive data type, just replace int with the Node. 
     // It won't affect any operations. (AKA we don't need to do anything special.)
     
+    return 0;
+    }
+///////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////
+////////// SET ////////////////////////////////////
+#include <iostream>
+#include <set>
+
+using namespace std;
+
+int main() 
+    {
+    cout << "C++ Set Code" << endl;
+    
+    // Sets are data structures that don't contain duplicates.
+    
+    // Create a set
+    set<int> myset;
+    
+    // Insert some numbers into the set. 
+    myset.insert(3);
+    myset.insert(2);
+    myset.insert(2);
+    myset.insert(4);
+    myset.insert(1);
+    
+    // Print each number in the set.
+    cout << "Printing the numbers in the set: " << endl;
+    set<int>::iterator it = myset.begin();
+    while(it != myset.end())
+        {
+        cout << *it << " ";
+        it++;
+        }
+    cout << endl;
+    
+    // Remove an item from the set.
+    myset.erase(2);
+    
+    // Check if a specific number is in the set
+    if(myset.find(2) == myset.end())
+        {
+        cout << "2 is no longer in the set." << endl;
+        }
+ 
     return 0;
     }
 ///////////////////////////////////////////////////////
